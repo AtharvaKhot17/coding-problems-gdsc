@@ -1,21 +1,17 @@
 #include <stdio.h>
-
-// Function to swap two elements in the array
-void swap(int* a, int* b) {
+void swap(int* a, int* b) 
     int temp = *a;
     *a = *b;
     *b = temp;
 }
-
-// Function to partition the array and return the pivot index
 int partition(int arr[], int low, int high) {
-    int pivot = arr[high]; // Choose the last element as the pivot
-    int i = (low - 1); // Initialize the index of the smaller element
+    int pivot = arr[high];
+    int i = (low - 1); 
 
     for (int j = low; j <= high - 1; j++) {
-        // If the current element is smaller than or equal to the pivot
+        
         if (arr[j] <= pivot) {
-            i++; // Increment index of the smaller element
+            i++;
             swap(&arr[i], &arr[j]);
         }
     }
@@ -24,13 +20,12 @@ int partition(int arr[], int low, int high) {
     return (i + 1);
 }
 
-// Function to implement Quick Sort
 void quickSort(int arr[], int low, int high) {
     if (low < high) {
-        // Find pivot element such that element smaller than pivot are on the left and greater on the right
+        
         int pi = partition(arr, low, high);
 
-        // Recursively sort elements before and after the pivot
+ 
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
